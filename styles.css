@@ -270,3 +270,13 @@ details p { color: var(--tinta-suave); }
 .franja-fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; z-index: -2; }
 .franja-foto::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(20, 28, 18, 0.55); }
 .franja-texto h2 { color: #fff; max-width: 22ch; margin-inline: auto; margin-bottom: 28px; }
+
+/* Extractos de opiniones de Airbnb */
+.resenas { grid-column: 1 / -1; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.resena { margin: 0; padding: 24px 22px; background: var(--gris); border-radius: var(--radio); display: flex; flex-direction: column; justify-content: space-between; gap: 16px; }
+.resena blockquote { margin: 0; }
+.resena blockquote p { margin: 0; font: 500 1.08rem/1.5 var(--serif); color: var(--tinta); }
+.resena blockquote p::before { content: "“"; display: block; font-size: 2.6rem; line-height: 0.6; color: var(--verde); margin-bottom: 6px; }
+.resena figcaption { font-size: 0.9rem; color: var(--tinta-suave); }
+.resena figcaption strong { color: var(--tinta); }
+.resenas-nota { grid-column: 1 / -1; margin: 0; }
