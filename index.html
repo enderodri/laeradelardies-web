@@ -202,12 +202,28 @@
     <div class="texto">
       <h2>Consulta disponibilidad</h2>
       <p>Escríbenos directamente y te contestamos con la disponibilidad y el precio para tus fechas.</p>
+      <div class="calendario" hidden data-url="https://raw.githubusercontent.com/enderodri/laeradelardies-web/disponibilidad/disponibilidad.json" data-actualizado="Actualizado" data-libre="Libre" data-ocupado="Ocupado">
+        <div class="calendario-cabecera">
+          <h3>Disponibilidad</h3>
+          <div class="calendario-flechas">
+            <button type="button" class="calendario-anterior" aria-label="Meses anteriores">‹</button>
+            <button type="button" class="calendario-siguiente" aria-label="Meses siguientes">›</button>
+          </div>
+        </div>
+        <div class="calendario-meses" aria-live="polite"></div>
+        <ul class="calendario-leyenda">
+          <li><span class="muestra libre"></span>Libre</li>
+          <li><span class="muestra ocupado"></span>Ocupado</li>
+          <li><span class="muestra elegido"></span>Tu estancia</li>
+        </ul>
+        <p class="ayuda">Pulsa el día de llegada y después el de salida para rellenar el formulario. Sincronizado con Airbnb y Booking. <span class="calendario-fecha"></span></p>
+      </div>
       <form class="formulario" novalidate
         data-whatsapp="34618721727" data-email="laeradelardies@gmail.com"
         data-plantilla="Hola, soy {nombre}. Quería consultar disponibilidad en La Era de Lardiés del {llegada} al {salida} para {personas}.
 
 {mensaje}" data-asunto="Consulta de disponibilidad"
-        data-error-fechas="La fecha de salida debe ser posterior a la de llegada." data-pendiente="pendiente">
+        data-error-fechas="La fecha de salida debe ser posterior a la de llegada." data-error-ocupado="Alguna noche de esas fechas ya está reservada. Elige otras fechas o consúltanos." data-pendiente="pendiente">
         <div class="campos-fila">
           <label>Llegada<input type="date" name="llegada" required></label>
           <label>Salida<input type="date" name="salida" required></label>

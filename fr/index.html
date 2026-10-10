@@ -202,12 +202,28 @@
     <div class="texto">
       <h2>Voir les disponibilités</h2>
       <p>Écrivez-nous directement et nous vous répondrons avec les disponibilités et le prix pour vos dates.</p>
+      <div class="calendario" hidden data-url="https://raw.githubusercontent.com/enderodri/laeradelardies-web/disponibilidad/disponibilidad.json" data-actualizado="Mis à jour" data-libre="Libre" data-ocupado="Réservé">
+        <div class="calendario-cabecera">
+          <h3>Disponibilités</h3>
+          <div class="calendario-flechas">
+            <button type="button" class="calendario-anterior" aria-label="Mois précédents">‹</button>
+            <button type="button" class="calendario-siguiente" aria-label="Mois suivants">›</button>
+          </div>
+        </div>
+        <div class="calendario-meses" aria-live="polite"></div>
+        <ul class="calendario-leyenda">
+          <li><span class="muestra libre"></span>Libre</li>
+          <li><span class="muestra ocupado"></span>Réservé</li>
+          <li><span class="muestra elegido"></span>Votre séjour</li>
+        </ul>
+        <p class="ayuda">Touchez le jour d&#39;arrivée puis celui de départ pour remplir le formulaire. Synchronisé avec Airbnb et Booking. <span class="calendario-fecha"></span></p>
+      </div>
       <form class="formulario" novalidate
         data-whatsapp="34618721727" data-email="laeradelardies@gmail.com"
         data-plantilla="Bonjour, je m&#39;appelle {nombre}. Je souhaiterais connaître les disponibilités de La Era de Lardiés du {llegada} au {salida} pour {personas}.
 
 {mensaje}" data-asunto="Demande de disponibilité"
-        data-error-fechas="La date de départ doit être postérieure à la date d&#39;arrivée." data-pendiente="à compléter">
+        data-error-fechas="La date de départ doit être postérieure à la date d&#39;arrivée." data-error-ocupado="Certaines nuits de ces dates sont déjà réservées. Choisissez d&#39;autres dates ou contactez-nous." data-pendiente="à compléter">
         <div class="campos-fila">
           <label>Arrivée<input type="date" name="llegada" required></label>
           <label>Départ<input type="date" name="salida" required></label>

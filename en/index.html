@@ -202,12 +202,28 @@
     <div class="texto">
       <h2>Check availability</h2>
       <p>Message us directly and we will reply with availability and the price for your dates.</p>
+      <div class="calendario" hidden data-url="https://raw.githubusercontent.com/enderodri/laeradelardies-web/disponibilidad/disponibilidad.json" data-actualizado="Updated" data-libre="Available" data-ocupado="Booked">
+        <div class="calendario-cabecera">
+          <h3>Availability</h3>
+          <div class="calendario-flechas">
+            <button type="button" class="calendario-anterior" aria-label="Previous months">‹</button>
+            <button type="button" class="calendario-siguiente" aria-label="Next months">›</button>
+          </div>
+        </div>
+        <div class="calendario-meses" aria-live="polite"></div>
+        <ul class="calendario-leyenda">
+          <li><span class="muestra libre"></span>Available</li>
+          <li><span class="muestra ocupado"></span>Booked</li>
+          <li><span class="muestra elegido"></span>Your stay</li>
+        </ul>
+        <p class="ayuda">Tap your arrival day and then your departure day to fill in the form. Synced with Airbnb and Booking. <span class="calendario-fecha"></span></p>
+      </div>
       <form class="formulario" novalidate
         data-whatsapp="34618721727" data-email="laeradelardies@gmail.com"
         data-plantilla="Hello, my name is {nombre}. I would like to check availability at La Era de Lardiés from {llegada} to {salida} for {personas}.
 
 {mensaje}" data-asunto="Availability enquiry"
-        data-error-fechas="The departure date must be after the arrival date." data-pendiente="pending">
+        data-error-fechas="The departure date must be after the arrival date." data-error-ocupado="Some nights in those dates are already booked. Choose other dates or ask us." data-pendiente="pending">
         <div class="campos-fila">
           <label>Arrival<input type="date" name="llegada" required></label>
           <label>Departure<input type="date" name="salida" required></label>

@@ -1,0 +1,63 @@
+# Cada hora lee los calendarios de Airbnb y Booking (secretos ICAL_AIRBNB e ICAL_BOOKING)
+# y publica las noches ocupadas en la rama «disponibilidad». La web lee el JSON desde
+# raw.githubusercontent.com, así que no hace falta volver a publicar la web.
+name: Disponibilidad
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: disponibilidad
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Leer calendarios
+        env:
+          ICAL_AIRBNB: ${{ secrets.ICAL_AIRBNB }}
+          ICAL_BOOKING: ${{ secrets.ICAL_BOOKING }}
+        run: |
+          # Sin enlaces configurados todavía: terminar sin error (evita avisos de fallo cada hora)
+          if [ -z "$ICAL_AIRBNB$ICAL_BOOKING" ]; then
+            echo "Faltan los secretos ICAL_AIRBNB / ICAL_BOOKING; no se actualiza nada"
+            echo "OMITIR=1" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          node .github/disponibilidad.mjs > "$RUNNER_TEMP/disponibilidad.json"
+
+      - name: Publicar en la rama disponibilidad
+        if: env.OMITIR != '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git fetch --depth 1 origin disponibilidad; then
+            git switch -C disponibilidad FETCH_HEAD
+          else
+            git switch --orphan disponibilidad
+            git rm -rq --cached . || true
+            git clean -fdqx
+          fi
+          # Solo se compara la lista de noches: la fecha de actualización cambia en cada lectura
+          nuevo=$(node -e "console.log(JSON.stringify(JSON.parse(require('fs').readFileSync(process.argv[1],'utf8')).ocupado))" "$RUNNER_TEMP/disponibilidad.json")
+          viejo=$(node -e "try{console.log(JSON.stringify(JSON.parse(require('fs').readFileSync('disponibilidad.json','utf8')).ocupado))}catch{console.log('')}")
+          hoy=$(date -u +%F)
+          antes=$(node -e "try{console.log(JSON.parse(require('fs').readFileSync('disponibilidad.json','utf8')).actualizado.slice(0,10))}catch{console.log('')}")
+          # Se guarda si cambian las noches o, como mínimo, una vez al día (mantiene viva la tarea programada)
+          if [ "$nuevo" != "$viejo" ] || [ "$hoy" != "$antes" ]; then
+            cp "$RUNNER_TEMP/disponibilidad.json" disponibilidad.json
+            git add disponibilidad.json
+            git commit -qm "Actualiza la disponibilidad"
+            git push -q origin disponibilidad
+            echo "Disponibilidad actualizada"
+          else
+            echo "Sin cambios"
+          fi

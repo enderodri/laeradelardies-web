@@ -280,3 +280,33 @@ details p { color: var(--tinta-suave); }
 .resena figcaption { font-size: 0.9rem; color: var(--tinta-suave); }
 .resena figcaption strong { color: var(--tinta); }
 .resenas-nota { grid-column: 1 / -1; margin: 0; }
+
+/* Calendario de disponibilidad (sobre la banda oscura de reservas) */
+.calendario { margin-top: 28px; padding: 22px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: var(--radio); }
+.calendario[hidden] { display: none; }
+.calendario-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.calendario-cabecera h3 { margin: 0; color: #fff; }
+.calendario-flechas { display: flex; gap: 8px; }
+.calendario-flechas button { width: 44px; height: 44px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: var(--radio); background: transparent; color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; }
+.calendario-flechas button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.12); }
+.calendario-flechas button:disabled { opacity: 0.35; cursor: default; }
+.calendario-meses { display: grid; gap: 24px; }
+@media (min-width: 600px) { .calendario-meses { grid-template-columns: 1fr 1fr; } }
+.mes-nombre { margin: 0 0 8px; font-weight: 700; text-align: center; }
+.mes-nombre::first-letter { text-transform: uppercase; }
+.mes-rejilla { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.semana { text-align: center; font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); padding-bottom: 4px; text-transform: uppercase; }
+.dia { display: grid; place-items: center; min-height: 36px; border: 0; border-radius: 3px; font: 600 0.9rem var(--sans); }
+button.dia { cursor: pointer; }
+.dia.pasado { color: rgba(255, 255, 255, 0.28); }
+.dia.libre { background: rgba(207, 224, 191, 0.16); color: #fff; }
+.dia.libre:hover { background: rgba(207, 224, 191, 0.32); }
+.dia.ocupado { background: rgba(163, 74, 44, 0.45); color: rgba(255, 255, 255, 0.6); text-decoration: line-through; }
+.dia.elegido { background: #cfe0bf; color: var(--bosque); text-decoration: none; }
+.calendario-leyenda { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 16px 0 8px; font-size: 0.88rem; }
+.calendario-leyenda li { display: flex; align-items: center; gap: 6px; }
+.muestra { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.muestra.libre { background: rgba(207, 224, 191, 0.35); }
+.muestra.ocupado { background: rgba(163, 74, 44, 0.75); }
+.muestra.elegido { background: #cfe0bf; }
+.calendario .ayuda { margin: 0; }
