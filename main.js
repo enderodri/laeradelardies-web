@@ -14,8 +14,8 @@
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") cierra(); });
   }
 
-  // Aviso de reserva directa: tarjeta pequeña a los 6 s. No aparece si ya se está viendo la
-  // sección de reservas y, una vez cerrada o usada, no vuelve en la misma visita
+  // Aviso de reserva directa: tarjeta pequeña a los 5 s. Se oculta mientras se ve la sección
+  // de reservas (y vuelve al salir de ella) y, una vez cerrada o usada, no vuelve en la visita
   const aviso = document.querySelector(".aviso-directo");
   const reservas = document.getElementById("reservar");
   if (aviso && reservas) {
@@ -23,12 +23,15 @@
     try { visto = sessionStorage.getItem("aviso-directo") === "1"; } catch {}
     const cierra = () => {
       aviso.hidden = true;
+      visto = true;
       try { sessionStorage.setItem("aviso-directo", "1"); } catch {}
     };
     let enReservas = false;
+    let pendiente = false; // tocaba mostrarla pero se estaba en reservas: sale al salir de ahí
     new IntersectionObserver(([e]) => {
       enReservas = e.isIntersecting;
-      if (enReservas) aviso.hidden = true;
+      if (enReservas && !aviso.hidden) { aviso.hidden = true; pendiente = true; }
+      else if (!enReservas && pendiente && !visto) { pendiente = false; muestra(); }
     }).observe(reservas);
     aviso.querySelector(".aviso-cerrar").addEventListener("click", cierra);
     aviso.querySelector("a").addEventListener("click", cierra);
@@ -40,11 +43,12 @@
       aviso.querySelector("a").focus();
     });
     const muestra = () => {
-      if (enReservas) return;
+      if (visto) return;
+      if (enReservas) { pendiente = true; return; }
       aviso.classList.toggle("plegado", matchMedia("(max-width: 599px)").matches);
       aviso.hidden = false;
     };
-    if (!visto) setTimeout(muestra, 6000);
+    if (!visto) setTimeout(muestra, 5000);
   }
 
   // Carrusel de portada: avanza solo cada 3,5 s; se para al pasar el ratón o el foco, con el
