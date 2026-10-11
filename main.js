@@ -32,7 +32,19 @@
     }).observe(reservas);
     aviso.querySelector(".aviso-cerrar").addEventListener("click", cierra);
     aviso.querySelector("a").addEventListener("click", cierra);
-    if (!visto) setTimeout(() => { if (!enReservas) aviso.hidden = false; }, 6000);
+    // En el móvil aparece plegada como un icono con una burbuja; al tocarla se abre la tarjeta
+    const icono = aviso.querySelector(".aviso-icono");
+    icono.addEventListener("click", () => {
+      aviso.classList.remove("plegado");
+      icono.setAttribute("aria-expanded", "true");
+      aviso.querySelector("a").focus();
+    });
+    const muestra = () => {
+      if (enReservas) return;
+      aviso.classList.toggle("plegado", matchMedia("(max-width: 599px)").matches);
+      aviso.hidden = false;
+    };
+    if (!visto) setTimeout(muestra, 6000);
   }
 
   // Carrusel de portada: avanza solo cada 3,5 s; se para al pasar el ratón o el foco, con el
