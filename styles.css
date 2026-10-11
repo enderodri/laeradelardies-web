@@ -354,3 +354,32 @@ button.dia { cursor: pointer; }
   .aviso-titulo { font-size: 1.02rem; }
   .aviso-texto { display: none; }
 }
+
+/* Teléfono siempre visible en la cabecera */
+.cabecera-tel { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: var(--radio); color: var(--verde-oscuro); font-weight: 700; text-decoration: none; white-space: nowrap; order: 3; }
+.cabecera-tel:hover { background: var(--gris); }
+.menu { order: 2; margin-left: auto; }
+.cabecera .logo { order: 1; }
+.cabecera { justify-content: flex-start; }
+@media (min-width: 900px) and (max-width: 1199px) { .cabecera-tel span { display: none; } }
+@media (max-width: 899px) {
+  .cabecera-tel { order: 2; margin-left: auto; width: 44px; height: 44px; justify-content: center; padding: 0; border: 1px solid var(--linea); }
+  .cabecera-tel span { display: none; }
+  .menu-boton { order: 3; padding: 8px 10px; }
+  .cabecera { gap: 10px; }
+  .cabecera .logo { gap: 8px; min-width: 0; }
+  .cabecera .logo-icono { width: 32px; height: 32px; }
+  .cabecera .logo-nombre { font-size: 1.05rem; white-space: nowrap; }
+}
+
+/* Contacto directo destacado en la sección de reservas */
+.boton .icono { width: 20px; height: 20px; }
+.contacto-directo { margin: 8px 0 24px; padding: 22px 22px 24px; background: #fff; color: var(--tinta); border-radius: var(--radio); }
+.contacto-titulo { margin: 0 0 6px; font: 600 1.5rem/1.2 var(--serif); color: var(--verde-oscuro); }
+.contacto-directo p { color: var(--tinta-suave); margin-bottom: 0; }
+.contacto-directo .acciones { margin: 16px 0 0; }
+.reservar .contacto-directo .boton-borde { color: var(--verde-oscuro); border-color: var(--verde); }
+
+/* Teléfono bajo el botón del aviso */
+.aviso-tel { margin: 10px 0 0; text-align: center; font-size: 0.9rem; color: var(--tinta-suave); }
+.aviso-tel a { color: var(--verde-oscuro); font-weight: 700; }
