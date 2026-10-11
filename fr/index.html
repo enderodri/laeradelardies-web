@@ -24,7 +24,7 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" type="image/webp" imagesrcset="/img/fachada-anochecer-480.webp 480w, /img/fachada-anochecer-960.webp 960w, /img/fachada-anochecer-1536.webp 1536w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="/styles.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"La Era de Lardiés","description":"Ferme en pierre de 1720 restaurée à Lardiés (Huesca), à 15 km du Parc national d'Ordesa. Jusqu'à 6 personnes, 2 chambres, 2 salles de bain et un jardin de 800 m² avec barbecue.","url":"https://laeradelardies.com/fr/","image":["https://laeradelardies.com/img/fachada-anochecer-1536.webp","https://laeradelardies.com/img/salon-comedor-vigas-1536.webp","https://laeradelardies.com/img/era-jardin-montanas-1600.webp","https://laeradelardies.com/img/balcon-vistas-valle-1600.webp"],"address":{"@type":"PostalAddress","streetAddress":"Calle Santa Águeda, 11","addressLocality":"Lardiés","addressRegion":"Huesca, Aragón","addressCountry":"ES","postalCode":"22373"},"geo":{"@type":"GeoCoordinates","latitude":42.4979915,"longitude":-0.1330118},"telephone":"+34618721727","email":"laeradelardies@gmail.com","numberOfRooms":2,"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Wifi","value":true},{"@type":"LocationFeatureSpecification","name":"Free parking","value":true},{"@type":"LocationFeatureSpecification","name":"Barbecue","value":true},{"@type":"LocationFeatureSpecification","name":"Fireplace","value":true},{"@type":"LocationFeatureSpecification","name":"Garden","value":true},{"@type":"LocationFeatureSpecification","name":"Wheelchair accessible","value":true},{"@type":"LocationFeatureSpecification","name":"Kitchen","value":true}],"sameAs":["https://www.airbnb.com/h/laeradelardies","https://www.booking.com/hotel/es/borda-en-paradisiaco-enclave.html"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LodgingBusiness","name":"La Era de Lardiés","description":"Ferme en pierre de 1720 restaurée à Lardiés (Huesca), à 15 km du Parc national d'Ordesa. Jusqu'à 6 personnes, 2 chambres, 2 salles de bain et un jardin de 800 m² avec barbecue.","url":"https://laeradelardies.com/fr/","image":["https://laeradelardies.com/img/fachada-anochecer-1536.webp","https://laeradelardies.com/img/salon-comedor-vigas-1536.webp","https://laeradelardies.com/img/era-jardin-montanas-1600.webp","https://laeradelardies.com/img/balcon-vistas-valle-1600.webp"],"address":{"@type":"PostalAddress","streetAddress":"Calle Santa Águeda, 11","addressLocality":"Lardiés","addressRegion":"Huesca, Aragón","addressCountry":"ES","postalCode":"22373"},"geo":{"@type":"GeoCoordinates","latitude":42.4979915,"longitude":-0.1330118},"telephone":"+34618721727","email":"laeradelardies@gmail.com","numberOfRooms":2,"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Wifi","value":true},{"@type":"LocationFeatureSpecification","name":"Free parking","value":true},{"@type":"LocationFeatureSpecification","name":"Barbecue","value":true},{"@type":"LocationFeatureSpecification","name":"Fireplace","value":true},{"@type":"LocationFeatureSpecification","name":"Garden","value":true},{"@type":"LocationFeatureSpecification","name":"Wheelchair accessible","value":true},{"@type":"LocationFeatureSpecification","name":"Kitchen","value":true}],"sameAs":["https://www.airbnb.com/h/laeradelardies","https://www.booking.com/hotel/es/borda-en-paradisiaco-enclave.html","https://www.instagram.com/laeradelardies/"]}</script>
 </head>
 <body>
 <a class="saltar" href="#contenido">Aller au contenu</a>
@@ -202,6 +202,10 @@
     <div class="texto">
       <h2>Voir les disponibilités</h2>
       <p>Écrivez-nous directement et nous vous répondrons avec les disponibilités et le prix pour vos dates.</p>
+      <div class="ventajas">
+        <p class="antetitulo">Pourquoi réserver en direct</p>
+        <ul><li>Un meilleur prix que sur les plateformes, sans leurs commissions</li><li>Contact direct avec les propriétaires</li><li>Arrivée flexible</li><li>Réponse rapide sur WhatsApp</li></ul>
+      </div>
       <div class="calendario" hidden data-url="https://raw.githubusercontent.com/enderodri/laeradelardies-web/disponibilidad/disponibilidad.json" data-actualizado="Mis à jour" data-libre="Libre" data-ocupado="Réservé">
         <div class="calendario-cabecera">
           <h3>Disponibilités</h3>
@@ -244,9 +248,18 @@
       <a class="boton boton-borde" href="https://www.airbnb.com/h/laeradelardies" target="_blank" rel="noopener">Airbnb</a>
       <a class="boton boton-borde" href="https://www.booking.com/hotel/es/borda-en-paradisiaco-enclave.html" target="_blank" rel="noopener">Booking</a>
       <p><a class="enlace" href="tel:+34618721727">Appeler: +34 618 72 17 27</a></p>
+      <p><a class="instagram" href="https://www.instagram.com/laeradelardies/" target="_blank" rel="noopener"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Suivez-nous sur Instagram</span></a></p>
     </aside>
   </div>
 </section>
+
+<aside class="aviso-directo" hidden aria-label="Réservation directe">
+  <button type="button" class="aviso-cerrar" aria-label="Fermer l&#39;avis">×</button>
+  <p class="antetitulo">Réservation directe</p>
+  <p class="aviso-titulo">Moins cher en réservant avec nous</p>
+  <p class="aviso-texto">Sans les commissions d&#39;Airbnb ni de Booking : écrivez-nous pour obtenir notre prix direct.</p>
+  <a class="boton" href="#reservar">Voir les dates</a>
+</aside>
 
 <section id="preguntas" class="seccion contenedor estrecho" aria-labelledby="titulo-faq">
   <h2 id="titulo-faq">Questions fréquentes</h2>
@@ -273,6 +286,7 @@
     <div>
       <p><a href="mailto:laeradelardies@gmail.com">laeradelardies@gmail.com</a></p>
       <p><a href="tel:+34618721727">+34 618 72 17 27</a></p>
+      <p><a class="instagram" href="https://www.instagram.com/laeradelardies/" target="_blank" rel="noopener"><svg class="icono" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Suivez-nous sur Instagram</span></a></p>
     </div>
   </div>
 </footer>

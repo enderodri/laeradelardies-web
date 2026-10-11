@@ -14,6 +14,27 @@
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") cierra(); });
   }
 
+  // Aviso de reserva directa: tarjeta pequeña a los 6 s. No aparece si ya se está viendo la
+  // sección de reservas y, una vez cerrada o usada, no vuelve en la misma visita
+  const aviso = document.querySelector(".aviso-directo");
+  const reservas = document.getElementById("reservar");
+  if (aviso && reservas) {
+    let visto = false;
+    try { visto = sessionStorage.getItem("aviso-directo") === "1"; } catch {}
+    const cierra = () => {
+      aviso.hidden = true;
+      try { sessionStorage.setItem("aviso-directo", "1"); } catch {}
+    };
+    let enReservas = false;
+    new IntersectionObserver(([e]) => {
+      enReservas = e.isIntersecting;
+      if (enReservas) aviso.hidden = true;
+    }).observe(reservas);
+    aviso.querySelector(".aviso-cerrar").addEventListener("click", cierra);
+    aviso.querySelector("a").addEventListener("click", cierra);
+    if (!visto) setTimeout(() => { if (!enReservas) aviso.hidden = false; }, 6000);
+  }
+
   // Carrusel de portada: avanza solo cada 3,5 s; se para al pasar el ratón o el foco, con el
   // botón de pausa (WCAG 2.2.2), con la pestaña oculta y si el sistema pide reducir movimiento
   const carrusel = document.querySelector(".carrusel");
