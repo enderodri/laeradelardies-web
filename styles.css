@@ -337,6 +337,8 @@ button.dia { cursor: pointer; }
 @keyframes aparece { from { opacity: 0; transform: translateY(12px); } }
 @media (prefers-reduced-motion: reduce) { .aviso-directo { animation: none; } }
 @media (max-width: 599px) {
-  .aviso-directo { left: 12px; right: 12px; bottom: 12px; width: auto; padding: 14px 16px 14px; }
+  /* En el móvil, también en la esquina: más estrecha y sin el texto largo */
+  .aviso-directo { right: 12px; bottom: 12px; width: min(250px, calc(100% - 24px)); padding: 12px 14px 14px; }
+  .aviso-titulo { font-size: 1.02rem; }
   .aviso-texto { display: none; }
 }
